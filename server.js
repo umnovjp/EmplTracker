@@ -1,6 +1,16 @@
 const express = require('express');
+const fs = require('fs');
 // Import and require mysql2
 const mysql = require('mysql2');
+const elephant = `
+       _                 
+   ___/ \-.___          
+.-/     (    o\_//     
+|  ___  \_/\---'         
+|_||  |_||  
+
+
+`
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -21,6 +31,19 @@ const db = mysql.createConnection(
   },
   console.log(`Connected to the employee_db database.`)
 );
+
+console.log(elephant);
+
+fs.readFile('./src/list.txt', 'utf8', (err, data) => {
+    console.log(data)
+    text1 = data
+    console.log(typeof text1);
+    table0 = text1.split(']')
+    console.log('here is table0 ' + table0[0])
+    console.log('here is table1 ' + table0[1])
+    console.log('here is table2 ' + table0[2])
+})
+
 
 // Read department id and name: first get route
 app.get('/db/department', (req, res) => {
@@ -56,7 +79,7 @@ app.get('/db/role', (req, res) => {
 
     // Read employees: third get route
   app.get('/db/employee', (req, res) => {
-    const sql = `SELECT id, first_name AS first_name FROM employee`;
+    const sql = `SELECT * FROM employee`;
     
     db.query(sql, (err, rows) => {
       if (err) {
@@ -90,9 +113,27 @@ app.post('/db/department', ({ body }, res) => {
 
   //second post route to add role
   app.post('/db/role', ({ body }, res) => {
-    const sql = `INSERT INTO role (title)
-      VALUES (?)`;
-    const params = [body.title];
+    const sql = `INSERT INTO role (title, salary, department_id)
+      VALUES (?, ?, ?)`;
+    const params = [body.title, body.salary, body.department_id];
+    
+    db.query(sql, params, (err, result) => {
+      if (err) {
+        res.status(400).json({ error: err.message });
+        return;
+      }
+      res.json({
+        message: 'success',
+        data: body
+      });
+    });
+  });
+
+  // third post to add an employee
+app.post('/db/employee', ({ body }, res) => {
+    const sql = `INSERT INTO employee (first_name, last_name, manager_id, role_id)
+      VALUES (?, ?, ?, ?)`;
+    const params = [body.first_name, body.last_name, body.manager_id, body.role_id];
     
     db.query(sql, params, (err, result) => {
       if (err) {
@@ -108,8 +149,8 @@ app.post('/db/department', ({ body }, res) => {
 
   // Update role
 app.put('/db/role/:id', (req, res) => {
-    const sql = `UPDATE role SET title = ? WHERE id = ?`;
-    const params = [req.body.department_id, req.params.id];
+    const sql = `UPDATE role SET (id, title, salary, department_id) WHERE id = ?`;
+    const params = [req.body.title, req.body.salary, req.body.department_id];
   
     db.query(sql, params, (err, result) => {
       if (err) {
