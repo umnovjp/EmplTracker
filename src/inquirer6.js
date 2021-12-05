@@ -101,6 +101,28 @@ db.execute(
                whatTheHeckAreYouDoingHereToday();
             })
         }
+        else if (choice1 == 'add department') {
+            console.log('u r in add department');
+            return inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'name',
+                    message: 'enter department name',
+                }
+            ]).then(choice5 => {console.log(choice5);
+                const { name } = choice5
+                // execute will internally call prepare and query
+db.execute(
+    'INSERT INTO `department` (name) VALUES (?)',
+    [name],
+    function(err, results, fields) {
+        if (err) console.log(err);
+      console.log(results); // results contains rows returned by server
+    }
+  );
+               whatTheHeckAreYouDoingHereToday();
+            })
+        }
         else if (choice1 == 'view departments') {
             console.log('u r in view departments');
             db.query(
