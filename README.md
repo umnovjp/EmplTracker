@@ -29,6 +29,11 @@ When I choose to add a role I am prompted to enter the name, salary, and departm
 and that role is added to the database
 
 ![image](https://user-images.githubusercontent.com/88174852/145523095-2e86bd7d-6672-4567-88f6-2be28eb924aa.png)
+
 When I choose to add an employee I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database. When I choose to update an employee role I am prompted to select an employee to update and their new role and this information is updated in the database, Try last two features yourself. 
+## Kind of bonus
+When I wrote this code I was sure we are supposed to use node.js. So I have all those routes specified. It turned out they are not necessary. But I can make it run on server in just few seconds. 
+![image](https://user-images.githubusercontent.com/88174852/145524093-51525c74-02d8-4d07-b68d-681fcb9b762f.png)
+
 ## Links
 There is link to walkthrough video on Google OneDrive: https://1drv.ms/u/s!AgXnMZnV3TsOhDIz614-i7FBqbHa?e=Rd4TYo. And here is repo link: https://github.com/umnovjp/EmplTracker/. 
