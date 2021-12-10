@@ -13,9 +13,13 @@ When I choose to view all roles I am presented with the job title, role id, the 
 
 When I choose to view all employees I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
 ![image](https://user-images.githubusercontent.com/88174852/145522594-c155093e-9e95-498e-a457-7ef7c9b1a0d4.png)
+
 When I choose to add a department I am prompted to enter the name of the department 
+
 ![image](https://user-images.githubusercontent.com/88174852/145522778-ab66f318-3caa-423f-b4cd-2b184270483c.png)
+
 and that department is added to the database
+
 ![image](https://user-images.githubusercontent.com/88174852/145522845-589af32d-b537-4133-a1ab-1e7518f908c4.png)
 When I choose to add a role I am prompted to enter the name, salary, and department for the role 
 ![image](https://user-images.githubusercontent.com/88174852/145523009-254d19fe-b23c-42be-9146-6ad68ba49ac2.png)
