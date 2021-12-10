@@ -21,9 +21,13 @@ When I choose to add a department I am prompted to enter the name of the departm
 and that department is added to the database
 
 ![image](https://user-images.githubusercontent.com/88174852/145522845-589af32d-b537-4133-a1ab-1e7518f908c4.png)
-When I choose to add a role I am prompted to enter the name, salary, and department for the role 
+
+When I choose to add a role I am prompted to enter the name, salary, and department for the role
+
 ![image](https://user-images.githubusercontent.com/88174852/145523009-254d19fe-b23c-42be-9146-6ad68ba49ac2.png)
+
 and that role is added to the database
+
 ![image](https://user-images.githubusercontent.com/88174852/145523095-2e86bd7d-6672-4567-88f6-2be28eb924aa.png)
 When I choose to add an employee I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database. When I choose to update an employee role I am prompted to select an employee to update and their new role and this information is updated in the database, Try last two features yourself. 
 ## Links
