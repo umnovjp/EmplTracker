@@ -28,9 +28,10 @@ db.query(
     'SELECT * FROM `employee`',
     function(err, results, fields) {
        console.table(results); // results contains rows returned by server
+       whatTheHeckAreYouDoingHereToday();
     }
   );
-            whatTheHeckAreYouDoingHereToday();
+          //  
         }
         else if (choice1 == 'add employee') {
             console.log('u r in add employee');
@@ -64,9 +65,10 @@ db.execute(
     function(err, results, fields) {
         if (err) console.log(err);
       console.table(results); // results contains rows returned by server
+      whatTheHeckAreYouDoingHereToday();
     }
   );
-              whatTheHeckAreYouDoingHereToday();
+             
             })   
         }
         else if (choice1 == 'add role') {
@@ -96,9 +98,10 @@ db.execute(
     function(err, results, fields) {
         if (err) console.log(err);
       console.log(results); // results contains rows returned by server
+      whatTheHeckAreYouDoingHereToday();
     }
   );
-               whatTheHeckAreYouDoingHereToday();
+               
             })
         }
         else if (choice1 == 'add department') {
@@ -118,9 +121,10 @@ db.execute(
     function(err, results, fields) {
         if (err) console.log(err);
       console.log(results); // results contains rows returned by server
+      whatTheHeckAreYouDoingHereToday();
     }
   );
-               whatTheHeckAreYouDoingHereToday();
+               
             })
         }
         else if (choice1 == 'view departments') {
@@ -129,9 +133,10 @@ db.execute(
                 'SELECT * FROM `department`',
                 function(err, results, fields) {
                    console.table(results); // results contains rows returned by server
+                   whatTheHeckAreYouDoingHereToday();
                 }
               );
-            whatTheHeckAreYouDoingHereToday();
+            
         }
         else if (choice1 == 'view roles') {
             console.log('u r in view roles');
@@ -139,14 +144,42 @@ db.execute(
                 'SELECT * FROM `role`',
                 function(err, results, fields) {
                    console.table(results); // results contains rows returned by server
+                   whatTheHeckAreYouDoingHereToday();
                 }
               );
-            whatTheHeckAreYouDoingHereToday();
+            
         }
         else if (choice1 == 'update role') {
-            console.log('u r in update role');
-            whatTheHeckAreYouDoingHereToday();
+                console.log('u r in update role');
+                return inquirer.prompt([
+                    {
+                        type: 'input',
+                        name: 'id',
+                        message: 'enter role id',
+                    },
+                    {
+                        type: 'input',
+                        name: 'title',
+                        message: 'enter new title',
+                    }
+                ]).then(choice5 => {console.log(choice5);
+                    const { id, title } = choice5
+                    // execute will internally call prepare and query
+    db.execute(
+        'UPDATE role SET title = ? WHERE id = ?',
+        [title, id],
+        function(err, results, fields) {
+            if (err) console.log(err);
+          console.log(results); // results contains rows returned by server
+          whatTheHeckAreYouDoingHereToday();
         }
+                )}
+                );}
+        //     console.log('u r in update role');
+        //     'UPDATE role',
+        //     'SET title', 
+        //     whatTheHeckAreYouDoingHereToday();
+        // }
         else {
             console.log('staff happens... your choice was invalid');
             whatTheHeckAreYouDoingHereToday();

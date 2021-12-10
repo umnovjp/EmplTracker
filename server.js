@@ -35,140 +35,131 @@ app.use(express.json());
 
 console.log(elephant);
 
-// fs.readFile('./src/list.txt', 'utf8', (err, data) => {
-//     console.log(data)
-//     text1 = data
-//     console.log(typeof text1);
-//     table0 = text1.split(']')
-//     console.log('here is table0 ' + table0[0])
-//     console.log('here is table1 ' + table0[1])
-//     console.log('here is table2 ' + table0[2])
-// })
 whatTheHeckAreYouDoingHereToday();
 
 // Read department id and name: first get route
-app.get('/db/department', (req, res) => {
-    const sql = `SELECT id, name AS name FROM department`;
+// app.get('/db/department', (req, res) => {
+//     const sql = `SELECT id, name AS name FROM department`;
     
-    db.query(sql, (err, rows) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-         return;
-      }
-      res.json({
-        message: 'success',
-        data: rows
-      });
-    });
-  });
+//     db.query(sql, (err, rows) => {
+//       if (err) {
+//         res.status(500).json({ error: err.message });
+//          return;
+//       }
+//       res.json({
+//         message: 'success',
+//         data: rows
+//       });
+//     });
+//   }); removed 12/9
 
   // Read roles: second get route
-app.get('/db/role', (req, res) => {
-    const sql = `SELECT * FROM role`;
+// app.get('/db/role', (req, res) => {
+//     const sql = `SELECT * FROM role`;
     
-    db.query(sql, (err, rows) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-         return;
-      }
-      res.json({
-        message: 'success',
-        data: rows
-      });
-    });
-  });
+//     db.query(sql, (err, rows) => {
+//       if (err) {
+//         res.status(500).json({ error: err.message });
+//          return;
+//       }
+//       res.json({
+//         message: 'success',
+//         data: rows
+//       });
+//     });
+//   }); removed 12/9
 
     // Read employees: third get route
-  app.get('/db/employee', (req, res) => {
-    const sql = `SELECT * FROM employee`;
+  // app.get('/db/employee', (req, res) => {
+  //   const sql = `SELECT * FROM employee`;
     
-    db.query(sql, (err, rows) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-         return;
-      }
-      res.json({
-        message: 'success',
-        data: rows
-      });
-    });
-  });
+  //   db.query(sql, (err, rows) => {
+  //     if (err) {
+  //       res.status(500).json({ error: err.message });
+  //        return;
+  //     }
+  //     res.json({
+  //       message: 'success',
+  //       data: rows
+  //     });
+  //   });
+  // }); removed 12/9
 
 // Add a department first post route
-app.post('/db/department', ({ body }, res) => {
-    const sql = `INSERT INTO department (name)
-      VALUES (?)`;
-    const params = [body.name];
+// app.post('/db/department', ({ body }, res) => {
+//     const sql = `INSERT INTO department (name)
+//       VALUES (?)`;
+//     const params = [body.name];
     
-    db.query(sql, params, (err, result) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
-        return;
-      }
-      res.json({
-        message: 'success',
-        data: body
-      });
-    });
-  });
+//     db.query(sql, params, (err, result) => {
+//       if (err) {
+//         res.status(400).json({ error: err.message });
+//         return;
+//       }
+//       res.json({
+//         message: 'success',
+//         data: body
+//       });
+//     });
+//   }); removed 12/9
 
   //second post route to add role
-  app.post('/db/role', ({ body }, res) => {
-    const sql = `INSERT INTO role (title, salary, department_id)
-      VALUES (?, ?, ?)`;
-    const params = [body.title, body.salary, body.department_id];
+  // app.post('/db/role', ({ body }, res) => {
+  //   const sql = `INSERT INTO role (title, salary, department_id)
+  //     VALUES (?, ?, ?)`;
+  //   const params = [body.title, body.salary, body.department_id];
     
-    db.query(sql, params, (err, result) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
-        return;
-      }
-      res.json({
-        message: 'success',
-        data: body
-      });
-    });
-  });
+  //   db.query(sql, params, (err, result) => {
+  //     if (err) {
+  //       res.status(400).json({ error: err.message });
+  //       return;
+  //     }
+  //     res.json({
+  //       message: 'success',
+  //       data: body
+  //     });
+  //   });
+  // }); removed 12/9
 
   // third post to add an employee
-app.post('/db/employee', ({ body }, res) => {
-    const sql = `INSERT INTO employee (first_name, last_name, manager_id, role_id)
-      VALUES (?, ?, ?, ?)`;
-    const params = [body.first_name, body.last_name, body.manager_id, body.role_id];
+// app.post('/db/employee', ({ body }, res) => {
+//     const sql = `INSERT INTO employee (first_name, last_name, manager_id, role_id)
+//       VALUES (?, ?, ?, ?)`;
+//     const params = [body.first_name, body.last_name, body.manager_id, body.role_id];
     
-    db.query(sql, params, (err, result) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
-        return;
-      }
-      res.json({
-        message: 'success',
-        data: body
-      });
-    });
-  });
+//     db.query(sql, params, (err, result) => {
+//       if (err) {
+//         res.status(400).json({ error: err.message });
+//         return;
+//       }
+//       res.json({
+//         message: 'success',
+//         data: body
+//       });
+//     });
+//   }); removed 12/9
 
   // Update role
-app.put('/db/role/:id', (req, res) => {
-    const sql = `UPDATE role SET (id, title, salary, department_id) WHERE id = ?`;
-    const params = [req.body.title, req.body.salary, req.body.department_id];
+// app.put('/db/role/:id', (req, res) => {
+//     const sql = `UPDATE role SET (id, title, salary, department_id) WHERE id = ?`;
+//     const params = [req.body.title, req.body.salary, req.body.department_id];
   
-    db.query(sql, params, (err, result) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
-      } else if (!result.affectedRows) {
-        res.json({
-          message: 'role not found'
-        });
-      } else {
-        res.json({
-          message: 'success',
-          data: req.body,
-          changes: result.affectedRows
-        });
-      }
-    });
-  });
+//     db.query(sql, params, (err, result) => {
+//       if (err) {
+//         res.status(400).json({ error: err.message });
+//       } else if (!result.affectedRows) {
+//         res.json({
+//           message: 'role not found'
+//         });
+//       } else {
+//         res.json({
+//           message: 'success',
+//           data: req.body,
+//           changes: result.affectedRows
+//         });
+//       }
+//     });
+//   }); removed 12/9
   
 
 // Query database puts department table to console.log
@@ -177,10 +168,10 @@ app.put('/db/role/:id', (req, res) => {
 // });
 
 // Default response for any other request (Not Found)
-app.use((req, res) => {
-  res.status(404).end();
-});
+// app.use((req, res) => {
+//   res.status(404).end();
+// }); removed 12/9
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// }); removed 12/9
